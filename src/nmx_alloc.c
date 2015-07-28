@@ -40,7 +40,7 @@ void *nmx_memalign(size_t alignment, size_t size)
     void  *p;
     int    err;
 #ifdef _WIN32
-    p=ngx_alloc(size);
+    p=nmx_alloc(size);
 #else
     err = posix_memalign(&p, alignment, size);
 #endif
