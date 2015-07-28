@@ -35,13 +35,14 @@ void *nmx_realloc(void *p, size_t size){
 
 }
 
-void *
-        nmx_memalign(size_t alignment, size_t size)
+void *nmx_memalign(size_t alignment, size_t size)
 {
     void  *p;
     int    err;
-
+#ifdef _WIN32
+    p=ngx_alloc(size);
+#else
     err = posix_memalign(&p, alignment, size);
-
+#endif
     return p;
 }
