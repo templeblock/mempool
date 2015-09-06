@@ -1,5 +1,5 @@
 #include "nmx_alloc.h"
-
+#include <memory.h>
 void *
 nmx_alloc(size_t size)
 {
@@ -40,7 +40,7 @@ void *nmx_memalign(size_t alignment, size_t size)
     void  *p;
     int    err;
 #ifdef _WIN32
-    p=nmx_alloc(size);
+    p=_mm_malloc(size,alignment);
 #else
     err = posix_memalign(&p, alignment, size);
 #endif
