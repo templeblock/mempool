@@ -1,5 +1,7 @@
 #include "nmx_alloc.h"
+#ifdef _WIN32
 #include <memory.h>
+#endif
 void *
 nmx_alloc(size_t size)
 {
